@@ -52,29 +52,31 @@ int main(int argc,char** argv)
 		//get the first line to store size of the array we need, and create array
 		std::string firstLine;
 		getline(inFile,firstLine);
-		int numInputs = stoi(firstLine);
+		int numInputs = std::stoi(firstLine);
 		int dataToSort[numInputs];
 
 		//loop through the rest of the data and store in dataToSort
 		std::cout << "input:" << std::endl;
 		std::cout << "[";
 		bool firstNumFlag = true;
+		std::string str;
 		int x = 0;
 		int i = 0;
-		while(!inFile >> x)
+		while(!inFile.eof())
 		{
-			if (firstNumFlag == true)
+			inFile >> x;
+			dataToSort[i] = x;
+			i++;
+			if (i == numInputs)
 			{
-				firstNumFlag = false;
+				std::cout << x;
 			}
 			else
 			{
-				dataToSort[i] = x;
-				i++;
-				std::cout << x << ", ";
+			std::cout << x << ", ";
 			}
 		}
-		std::cout << "]";
+		std::cout << "]\n";
 
 		//start the clock
 		std::clock_t c_start = std::clock();
@@ -92,11 +94,19 @@ int main(int argc,char** argv)
 		//print out the sorted data
 		std::cout << "output:" << std::endl;
 		std::cout << "[";
-		for (int i = 0; i < sizeof(dataToSort); i++)
+		for (int i = 0; i < numInputs; i++)
 		{
-			std::cout << dataToSort[i] << ", ";
+			if (i == numInputs-1)
+			{
+				std::cout << dataToSort[i];
+			}
+			else
+			{
+				std::cout << dataToSort[i] << ", ";
+			}
+
 		}
-		std::cout << "]";
+		std::cout << "]\n";
 
 		//close file
 		inFile.close();
