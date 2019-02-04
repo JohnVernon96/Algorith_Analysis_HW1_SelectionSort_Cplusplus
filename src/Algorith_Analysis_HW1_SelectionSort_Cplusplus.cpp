@@ -1,4 +1,4 @@
-// File        : Algorithm_Analysis_HW1_SelectionSort_Cplusplus
+// File        : Algorithm_Analysis_HW1_SelectionSort_Cplusplus.cpp
 // Author      : John Carvajal
 // Description : Implement the selection sort algorithm. This program accepts an input file
 // name as a command line argument. The first line of data in file file is the number of
@@ -123,6 +123,7 @@ void selectionSort(int arr[], int n)
 	{
 		minIndex = i;
 		for (j = i + 1; j < n; j++)
+		{
 			if (arr[j] < arr[minIndex])
 			{
 				minIndex = j;
@@ -133,7 +134,8 @@ void selectionSort(int arr[], int n)
 				arr[i] = arr[minIndex];
 				arr[minIndex] = tmp;
             }
-      }
+		}
+     }
 }
 
 
